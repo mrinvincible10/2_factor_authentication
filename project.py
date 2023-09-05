@@ -44,17 +44,27 @@ def scannercode():
             print("You have successfully cleared 2-Factor Authentication.")
 
 
-root = tk.Tk()
-tk.Label(text='Choose one of the following:')
-i = tk.IntVar()
-v1 = tk.Radiobutton(text='OTP',value=1,command='otp',variable=i).pack()
-v2 = tk.Radiobutton(text='QR Code',value=2,command='qrcod',variable=i).pack()
-tk.Button(root,text='Submit',command=root.destroy).pack()
+username=input("Enter username:")
+password=input("Enter password:")
 
-root.mainloop()
+print("Now going through 2 factor authentication.")
+check1=input("Enter username:")
+check2=input("Enter password:")
+if check1==username and check2==password:
+    root = tk.Tk()
+    tk.Label(text='Choose one of the following:')
+    i = tk.IntVar()
+    v1 = tk.Radiobutton(text='OTP',value=1,command='otp',variable=i).pack()
+    v2 = tk.Radiobutton(text='QR Code',value=2,command='qrcod',variable=i).pack()
+    tk.Button(root,text='Submit',command=root.destroy).pack()
 
-if i.get()==1:
-    one_time()
+    root.mainloop()
 
-if i.get()==2:
-    scannercode()
+    if i.get()==1:
+        one_time()
+
+    if i.get()==2:
+        scannercode()
+
+else:
+    print("Credentials do not match")
